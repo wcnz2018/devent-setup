@@ -1,0 +1,65 @@
+#! /bin/bash
+#! vi: syntax=sh
+
+if [ "$(uname)" = "Darwin" ]; then
+    alias ls='gls --color=auto'
+    alias umount='diskutil umount'
+else
+    alias ls='ls --color=auto'
+fi
+
+alias ll='ls -alF'
+alias lh='ls -lh'
+alias la='ls -A'
+alias l='ls -CF'
+
+function alias_colorls() {
+    alias ls='lsd'
+    alias l='ls -l'
+    alias la='ls -A'
+    alias lla='ls -lA'
+    alias lt='ls --tree'
+    alias lta='ls --tree -A'
+}
+[ -n "$(command -v lsd)" ] && alias_colorls
+
+alias mkdir='mkdir -pv'
+
+alias df='df -h'
+alias tree='tree -C'
+alias less='less -R'
+alias tree='tree -NClh'
+alias vi='nvim'
+alias svn='colorsvn'
+
+alias gll='git lg1'
+
+alias docker_env='eval $(docker-machine env docker-machine)'
+
+if [[ -s '/etc/zsh_command_not_found' ]]; then
+  source '/etc/zsh_command_not_found'
+fi
+
+export PATH=/usr/local/bin:/usr/local/opt/binutils/bin:$PATH
+
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+function pvc () {
+    pv < $1 > $2/$1
+}
+
+launchctl_find () {
+    LaunchctlPATHS=( \
+        ~/Library/LaunchAgents \
+        /Library/LaunchAgents \
+        /Library/LaunchDaemons \
+        /System/Library/LaunchAgents \
+        /System/Library/LaunchDaemons \
+    )
+
+    for curPATH in "${LaunchctlPATHS[@]}"
+    do
+        grep -r "$curPATH" -e "$1"
+    done
+    return 0;
+}
