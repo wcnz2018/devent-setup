@@ -13,7 +13,7 @@ prepare_package() {
 
     packages="neovim git tmux thefuck wget axel unrar tree zsh neofetch htop binutils pv"
     if [ "$platform" = "Linux" ]; then
-        packages="$packages curl locales exuberant-ctags packagekit-command-not-found command-not-found python-pip libsecret-1-0 libsecret-1-dev ruby-dev npm xz-utils terminator"
+        packages="$packages curl locales exuberant-ctags packagekit-command-not-found command-not-found python-pip libsecret-1-0 libsecret-1-dev ruby-dev npm xz-utils terminator python-pygments"
 
         install="$sudo apt-get -y install "
         copy="cp -arT"
@@ -27,7 +27,7 @@ prepare_package() {
         [ -z "$(command -v brew)" ] && \
             /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-        packages="$packages reattach-to-user-namespace coreutils ctags node xz lsd fd"
+        packages="$packages reattach-to-user-namespace coreutils ctags node xz lsd fd python"
         cask_packages="font-hack-nerd-font iterm2 pref-setter"
 
         install="brew install"
@@ -118,10 +118,13 @@ setup_misc() {
 		}
     fi
 
-    # iterm2
     if [ "$platform" = "Darwin" ]; then
+        # iterm2
         cp -a misc/com.googlecode.iterm2.plist ~/Library/Preferences/
         defaults read -app iTerm
+
+        # python related
+        pip3 install Pygments
     fi
 
     # npm

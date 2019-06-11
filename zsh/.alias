@@ -41,8 +41,10 @@ if [[ -s '/etc/zsh_command_not_found' ]]; then
 fi
 
 export PATH=/usr/local/bin:/usr/local/opt/binutils/bin:$PATH
-
 export HOMEBREW_NO_AUTO_UPDATE=1
+
+export LESS='-R'
+export LESSOPEN='|pygmentize -g %s'
 
 function pvc () {
     pv < $1 > $2/$1
