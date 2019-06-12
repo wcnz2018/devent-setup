@@ -9,7 +9,7 @@ copy=
 [ "$(whoami)" = "root" ] && sudo=
 
 prepare_package() {
-	printf "############### Install packages ###############\n"
+    printf "############### Install packages ###############\n"
 
     packages="neovim git tmux thefuck wget axel unrar tree zsh neofetch htop binutils pv coreutils"
     if [ "$platform" = "Linux" ]; then
@@ -18,9 +18,8 @@ prepare_package() {
         install="$sudo apt-get -y install "
         copy="cp -arT"
 
-		$sudo apt update
-
-		$sudo snap install lsd
+        $sudo apt update
+        $sudo snap install lsd
     elif [ "$platform" = "Darwin" ]; then
         export HOMEBREW_NO_AUTO_UPDATE=1
 
@@ -67,7 +66,7 @@ EOF
 }
 
 setup_zsh() {
-	printf "############### zsh ###############\n"
+    printf "############### zsh ###############\n"
     mkdir -pv ~/.antigen
     curl -L git.io/antigen > ~/.antigen/antigen.zsh
 
@@ -81,7 +80,7 @@ setup_zsh() {
 }
 
 setup_git() {
-	printf "############### git ###############\n"
+    printf "############### git ###############\n"
     if [ "$platform" = "Linux" ]; then
         cd /usr/share/doc/git/contrib/credential/libsecret
         $sudo make
@@ -108,14 +107,14 @@ setup_misc() {
 
     # nerd-font
     if [ "$platform" = "Linux" ]; then
-		mkdir -pv ~/.local/share/fonts
-		curl -O -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/UbuntuMono.zip
-		[ -f "UbuntuMono.zip" ] && {
-			unzip UbuntuMono.zip -d ~/.local/share/fonts && rm UbuntuMono.zip
-			fc-cache -f -v
+        mkdir -pv ~/.local/share/fonts
+        curl -O -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/UbuntuMono.zip
+        [ -f "UbuntuMono.zip" ] && {
+            unzip UbuntuMono.zip -d ~/.local/share/fonts && rm UbuntuMono.zip
+            fc-cache -f -v
 
-			printf "==> Use UbuntuMono Nerd Font Regular for terminal.\n\n"
-		}
+            printf "==> Use UbuntuMono Nerd Font Regular for terminal.\n\n"
+        }
     fi
 
     if [ "$platform" = "Darwin" ]; then
