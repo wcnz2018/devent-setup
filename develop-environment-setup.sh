@@ -26,7 +26,7 @@ prepare_package() {
         [ -z "$(command -v brew)" ] && \
             /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-        packages="$packages reattach-to-user-namespace ctags node xz lsd fd python"
+        packages="$packages reattach-to-user-namespace ctags node xz lsd fd python rust"
         cask_packages="font-hack-nerd-font iterm2 pref-setter"
 
         install="brew install"
@@ -124,6 +124,11 @@ setup_misc() {
 
         # python related
         pip3 install Pygments
+
+        # rebuild lsd with music icon replaced for iTerm user
+        git clone --depth=1 https://github.com/wcnz2018/lsd
+        cd lsd && cargo build --release && cp ./target/release/lsd /usr/local/bin/lsd && cd -
+        rm -rf lsd
     fi
 
     # npm
