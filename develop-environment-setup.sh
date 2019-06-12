@@ -11,7 +11,7 @@ copy=
 prepare_package() {
 	printf "############### Install packages ###############\n"
 
-    packages="neovim git tmux thefuck wget axel unrar tree zsh neofetch htop binutils pv"
+    packages="neovim git tmux thefuck wget axel unrar tree zsh neofetch htop binutils pv coreutils"
     if [ "$platform" = "Linux" ]; then
         packages="$packages curl locales exuberant-ctags packagekit-command-not-found command-not-found python-pip libsecret-1-0 libsecret-1-dev ruby-dev npm xz-utils terminator python-pygments"
 
@@ -27,7 +27,7 @@ prepare_package() {
         [ -z "$(command -v brew)" ] && \
             /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-        packages="$packages reattach-to-user-namespace coreutils ctags node xz lsd fd python"
+        packages="$packages reattach-to-user-namespace ctags node xz lsd fd python"
         cask_packages="font-hack-nerd-font iterm2 pref-setter"
 
         install="brew install"
