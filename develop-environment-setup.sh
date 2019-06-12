@@ -125,7 +125,8 @@ setup_misc() {
         # python related
         pip3 install Pygments
 
-        # rebuild lsd with music icon replaced for iTerm user
+        # rebuild lsd with music icon replaced for iTerm users
+        # see: https://github.com/Peltoche/lsd/issues/134
         git clone --depth=1 https://github.com/wcnz2018/lsd
         cd lsd && cargo build --release && cp ./target/release/lsd /usr/local/bin/lsd && cd -
         rm -rf lsd
