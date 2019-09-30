@@ -76,3 +76,5 @@ set clipboard=unnamed
 
 set backspace=indent,eol,start
 set shell=/usr/bin/zsh
+
+set wic
