@@ -4,6 +4,7 @@
 if [ "$(uname)" = "Darwin" ]; then
     alias ls='gls --color=auto'
     alias umount='diskutil umount'
+    alias rm='trash'
 else
     alias ls='ls --color=auto'
 fi
