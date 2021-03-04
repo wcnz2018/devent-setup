@@ -59,7 +59,11 @@ export LESS='-R'
 export LESSOPEN='|pygmentize -g %s'
 
 function pvc () {
-    pv < $1 > $2/$1
+    pv < "$1" > $2/$1
+}
+
+function spellcheck() {
+    echo "$1" | aspell -l en -a
 }
 
 launchctl_find () {

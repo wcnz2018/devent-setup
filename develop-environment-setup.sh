@@ -26,7 +26,7 @@ prepare_package() {
         [ -z "$(command -v brew)" ] && \
             /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-        packages="$packages reattach-to-user-namespace ctags node xz lsd fd python rust trash"
+        packages="$packages reattach-to-user-namespace ctags node xz lsd fd python rust trash aspell"
         cask_packages="font-hack-nerd-font iterm2 pref-setter"
 
         install="brew install"
