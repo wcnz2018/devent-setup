@@ -19,7 +19,6 @@ prepare_package() {
         copy="cp -arT"
 
         $sudo apt update
-        $sudo snap install lsd
     elif [ "$platform" = "Darwin" ]; then
         export HOMEBREW_NO_AUTO_UPDATE=1
 
@@ -132,7 +131,7 @@ setup_misc() {
     # rebuild lsd with music icon replaced for iTerm users
     # see: https://github.com/Peltoche/lsd/issues/134
     git clone --depth=1 https://github.com/wcnz2018/lsd
-    cd lsd && cargo build --release && cp ./target/release/lsd /usr/local/bin/lsd && cd -
+    cd lsd && cargo build --release && sudo cp ./target/release/lsd /usr/local/bin/lsd && cd -
     rm -rf lsd
 
     # npm
