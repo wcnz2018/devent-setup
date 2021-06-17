@@ -11,9 +11,9 @@ copy=
 prepare_package() {
     printf "############### Install packages ###############\n"
 
-    packages="neovim git tmux thefuck wget axel unrar tree zsh neofetch htop binutils pv coreutils"
+    packages="neovim git tmux thefuck wget axel tree zsh neofetch htop pv coreutils"
     if [ "$platform" = "Linux" ]; then
-        packages="$packages curl locales exuberant-ctags packagekit-command-not-found command-not-found python-pip libsecret-1-0 libsecret-1-dev ruby-dev npm xz-utils terminator python-pygments"
+        packages="$packages curl cargo locales exuberant-ctags packagekit-command-not-found binutils command-not-found python3-pip libsecret-1-0 libsecret-1-dev ruby-dev npm xz-utils unrar terminator python-pygments"
 
         install="$sudo apt-get -y install "
         copy="cp -arT"
@@ -34,7 +34,7 @@ prepare_package() {
 
         brew tap homebrew/cask-fonts
         brew tap homebrew/command-not-found
-        brew cask install $cask_packages
+        brew install $cask_packages
     else
         printf "Unsupported platform: $platform"
         exit 1
