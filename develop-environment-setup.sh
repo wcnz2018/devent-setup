@@ -11,9 +11,9 @@ copy=
 prepare_package() {
     printf "############### Install packages ###############\n"
 
-    packages="neovim git tmux thefuck wget axel tree zsh neofetch htop pv coreutils"
+    packages="neovim git tmux thefuck wget axel tree zsh neofetch htop pv cmake"
     if [ "$platform" = "Linux" ]; then
-        packages="$packages curl cargo locales exuberant-ctags packagekit-command-not-found binutils command-not-found python3-pip libsecret-1-0 libsecret-1-dev ruby-dev npm xz-utils unrar terminator python-pygments"
+        packages="$packages curl cargo locales exuberant-ctags packagekit-command-not-found binutils command-not-found python3-pip libsecret-1-0 libsecret-1-dev ruby-dev npm xz-utils unrar terminator python-pygments coreutils"
 
         install="$sudo apt-get -y install "
         copy="cp -arT"
