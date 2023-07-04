@@ -48,18 +48,12 @@ setup_nvim() {
     printf "###############  nvim ###############\n"
     mkdir -pv ~/.config/nvim
 
-    cat <<EOF > ~/.config/nvim/init.vim
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath=&runtimepath
-source ~/.vimrc
-EOF
+    $copy nvim/init.vim ~/.config/nvim
 
-    $copy nvim ~
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    vim -c "PluginInstall" -c "qa"
-
-    mv ~/.vimrc_complete ~/.vimrc
+    vim -c "PlugInstall" -c "qa"
 
     mkdir -pv $HOME/.vim/undo
 }
