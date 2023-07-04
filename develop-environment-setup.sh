@@ -70,6 +70,9 @@ setup_zsh() {
     cd ~/.antigen/bundles/romkatv/powerlevel10k
     patch -p1 < powerlevel10k.zsh-theme.patch
     cd -
+
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
 }
 
 setup_git() {
