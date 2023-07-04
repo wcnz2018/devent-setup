@@ -66,10 +66,6 @@ setup_zsh() {
     $copy zsh ~
 
     zsh -ic 'print Hello zsh'
-    mv ~/powerlevel10k.zsh-theme.patch ~/.antigen/bundles/romkatv/powerlevel10k/
-    cd ~/.antigen/bundles/romkatv/powerlevel10k
-    patch -p1 < powerlevel10k.zsh-theme.patch
-    cd -
 
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
@@ -87,6 +83,13 @@ setup_git() {
     fi
 
     $copy git ~
+
+    git clone --depth=1 https://github.com/dandavison/delta
+    cd delta
+    make
+    sudo cp target/release/delta /usr/local/bin
+    cd ..
+    rm -rf delta
 }
 
 setup_misc() {

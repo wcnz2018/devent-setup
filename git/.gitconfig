@@ -5,8 +5,10 @@
 	autocrlf = input
 	quotepath = false
 	excludesfile = ~/.gitignore_global
-    pager = diff-so-fancy | less --tabs=4 -RFX
+    pager = delta
 	ignorecase = false
+[delta]
+    line-numbers = true
 [alias]
     lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold red)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
 [http]
@@ -33,5 +35,3 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
-[diff-so-fancy]
-	rulerWidth = 47

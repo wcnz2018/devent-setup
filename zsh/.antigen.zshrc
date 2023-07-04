@@ -28,10 +28,7 @@ antigen bundle Tarrasch/zsh-bd
 antigen bundle mollifier/cd-gitroot
 antigen bundle P4Cu/cd-reporoot
 antigen bundle voronkovich/gitignore.plugin.zsh
-antigen bundle psprint/zsh-navigation-tools
 antigen bundle Tarrasch/zsh-colors
-
-antigen bundle zdharma/zsh-diff-so-fancy
 
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_first_and_last
