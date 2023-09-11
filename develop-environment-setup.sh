@@ -13,7 +13,7 @@ prepare_package() {
 
     packages="neovim git tmux thefuck wget axel tree zsh neofetch htop pv cmake"
     if [ "$platform" = "Linux" ]; then
-        packages="$packages curl cargo locales exuberant-ctags packagekit-command-not-found binutils command-not-found python3-pip libsecret-1-0 libsecret-1-dev ruby-dev npm xz-utils unrar terminator python-pygments coreutils"
+        packages="$packages curl cargo locales exuberant-ctags packagekit-command-not-found binutils command-not-found python3-pip libsecret-1-0 libsecret-1-dev ruby-dev npm xz-utils unrar coreutils"
 
         install="$sudo apt-get -y install "
         copy="cp -arT"
@@ -46,9 +46,9 @@ prepare_package() {
 
 setup_nvim() {
     printf "###############  nvim ###############\n"
-    mkdir -pv ~/.config/nvim
+    mkdir -pv ~/.config/nvim/plugins
 
-    $copy nvim/init.vim ~/.config/nvim
+    $copy nvim/init.vim ~/.config/nvim/
 
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
