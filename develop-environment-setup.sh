@@ -53,6 +53,11 @@ setup_nvim() {
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+    if [ "$platform" = "Linux" ]; then
+        mkdir ~/.local/share/nvim/site/autoload
+        cp ~/.vim/autoload/plug.vim ~/.local/share/nvim/site/autoload
+    fi
+
     vim -c "PlugInstall" -c "qa"
 
     mkdir -pv $HOME/.vim/undo
